@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+
+dependencies {
+    implementation 'org.springframework:spring-context'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    api 'com.github.ben-manes.caffeine:caffeine:3.2.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test { useJUnitPlatform() }
