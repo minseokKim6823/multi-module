@@ -1,0 +1,34 @@
+plugins {
+    id 'org.springframework.boot' version '3.5.5' apply false
+    id 'io.spring.dependency-management' version '1.1.7' apply false
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'practice'
+    version = '0.0.1-SNAPSHOT'
+
+    // ★ 모든 모듈에 레포지토리 공통 적용
+    repositories { mavenCentral() }
+
+    // ★ Spring Boot BOM 가져와서 버전 자동 관리
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:3.5.5"
+        }
+    }
+
+
+
+    // 자바/테스트 공통
+    tasks.withType(JavaCompile).configureEach {
+        sourceCompatibility = '17'
+        targetCompatibility = '17'
+        options.encoding = 'UTF-8'
+    }
+    tasks.withType(Test).configureEach {
+        useJUnitPlatform()
+    }
+}

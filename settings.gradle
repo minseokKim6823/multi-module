@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+rootProject.name = "multi-module"
+
+include "module-common"
+include "module-user"
+include "module-websocket"
+include "module-rest"
